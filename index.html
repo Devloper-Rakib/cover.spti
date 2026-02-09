@@ -1,0 +1,311 @@
+<!doctype html>
+<html lang="bn">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sylhet Professional Technical Institute - Assignment Paper</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.9.3/html2pdf.bundle.min.js"></script>
+    <style>
+      /* Load the TTF font */
+      @font-face {
+        font-family: "algerian"; /* Name you'll use in CSS */
+        src: url("fonts/Algerian_R_A.ttf") format("truetype");
+        font-weight: bold;
+        font-style: normal;
+      }
+
+      body {
+        font-family: "Arial", sans-serif;
+        background-color: #f4f4f4;
+        padding: 20px;
+      }
+      .container {
+        max-width: 800px;
+        margin: auto;
+        background: white;
+        padding: 25px;
+        border: 1px solid #ccc;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+      h2,
+      h3 {
+        text-align: center;
+        text-transform: uppercase;
+      }
+      .institute-name {
+        font-family: "algerian", sans-serif;
+        font-size: 27px;
+        font-weight: bold;
+        text-align: center;
+        margin-bottom: 10px;
+        margin-top: 10px;
+      }
+      .logo {
+        text-align: center;
+        margin-bottom: 20px;
+      }
+
+      .form-group {
+        margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+      }
+      .form-group label {
+        font-weight: bold;
+        width: 200px;
+        flex-shrink: 0;
+      }
+      .form-group input {
+        flex: 1;
+        padding: 5px;
+        border: none;
+        border-bottom: 1px dashed #bebebe;
+        outline: none;
+        font-weight: bold;
+        width: 100%;
+      }
+
+      /* ছোট ইনপুট বক্স এবং লেবেলের জন্য বিশেষ স্টাইল */
+      .small-input {
+        width: 80px !important;
+        flex-grow: 0 !important;
+      }
+      .label-small {
+        width: auto !important;
+        margin-left: 20px;
+      }
+
+      .section-title {
+        font-size: 18px;
+        font-weight: bold;
+        text-align: center;
+        border-bottom: 2px solid #333;
+        margin: 20px 0;
+        padding-bottom: 5px;
+      }
+
+      .signature-section {
+        margin-top: 50px;
+        display: flex;
+        justify-content: space-between;
+      }
+      .signature-box {
+        width: 40%;
+        text-align: center;
+        border-top: 1px solid #333;
+        padding-top: 10px;
+      }
+
+      .btn-container {
+        text-align: center;
+        margin-top: 30px;
+      }
+      button {
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+        background-color: #007bff;
+        color: white;
+        border: none;
+        border-radius: 5px;
+      }
+      button:hover {
+        background-color: #0056b3;
+      }
+
+      /* প্রিন্ট করার সময় স্টাইল ঠিক রাখার জন্য */
+      @media print {
+        body {
+          background: none;
+          padding: 0;
+        }
+        .container {
+          box-shadow: none;
+          border: none;
+        }
+        button {
+          display: none;
+        }
+      }
+
+      .mobileFormate {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container" id="pdfContent">
+      <div class="institute-name">SYLHET PROFESSIONAL TECHNICAL INSTITUTE</div>
+      <div class="logo">
+        <img src="logo.png" alt="LOGO" width="130" />
+      </div>
+
+      <h3 style="font-size: 30px; padding-top: 10px">Assignment Paper</h3>
+
+      <div class="section-title">Assignment Information</div>
+
+      <div class="form-group">
+        <label>Subject Name:</label>
+        <input type="text" id="subName" />
+      </div>
+      <div class="form-group">
+        <label>Subject Code:</label>
+        <input type="text" id="subCode" />
+      </div>
+      <div class="form-group">
+        <label>Name of Experiment:</label>
+        <input type="text" id="expName" />
+      </div>
+
+      <div class="form-group">
+        <label>Number of Experiment:</label>
+        <input type="text" id="expNum" class="small-input" />
+        <label class="label-small">Date of Exp.:</label>
+        <input type="date" id="expDateInput" />
+      </div>
+      <div class="form-group">
+        <label>Date of Submission:</label>
+        <input type="date" id="subDateInput" />
+      </div>
+
+      <br />
+      <div class="section-title">Student Information</div>
+
+      <div class="form-group">
+        <label style="width: 140px; flex-shrink: 0">Student Name:</label>
+        <input type="text" id="studentName" />
+      </div>
+
+      <div class="form-group">
+        <label style="width: 140px; flex-shrink: 0">Roll No:</label>
+        <input
+          type="text"
+          id="rollNo"
+          class="small-input"
+          style="min-width: 100px"
+        />
+        <label class="label-small">Semester:</label>
+        <input type="text" id="semester" />
+      </div>
+
+      <div class="form-group">
+        <label style="width: 140px; flex-shrink: 0">Registration No:</label>
+        <input type="text" id="regNo" style="min-width: 100px; flex-grow: 0" />
+        <label style="width: 100px; margin-left: 15px; flex-shrink: 0"
+          >Technology:</label
+        >
+        <input type="text" id="technology" style="flex-grow: 1" />
+      </div>
+
+      <br />
+      <div class="section-title">Teacher's comments</div>
+      <div style="height: 10px; border-bottom: 1px dashed #afafaf"></div>
+      <div style="height: 30px; border-bottom: 1px dashed #afafaf"></div>
+      <div style="height: 30px; border-bottom: 1px dashed #afafaf"></div>
+      <div style="height: 30px; border-bottom: 1px dashed #afafaf"></div>
+
+      <div class="signature-section">
+        <div class="signature-box">Signature of the student</div>
+        <div class="signature-box">Teacher's signature</div>
+      </div>
+    </div>
+
+    <div class="btn-container">
+      <button onclick="generatePDF()">Create PDF</button>
+    </div>
+    <!-- 
+    <div class="btn-container mobileFormate" style="background: saddlebrown">
+      <button class="" style="background: saddlebrown">Mobile Version</button>
+    </div> -->
+
+    <script>
+      // পেজ লোড হওয়ার সাথে সাথে ফাংশনটি চলবে
+      window.onload = function () {
+        // স্ক্রিনের প্রস্থ (width) চেক করা (যেমন: 768px এর নিচে হলে মোবাইল)
+        const maxWidth = 768;
+
+        if (window.innerWidth < maxWidth) {
+          // মোবাইল স্ক্রিন হলে অন্য URL-এ রিডাইরেক্ট হবে
+          // window.location.href = "https://your-mobile-site.com";
+        }
+      };
+
+      // তারিখ ফরম্যাট করার ফাংশন
+      function formatDate(dateString) {
+        if (!dateString) return "";
+        const date = new Date(dateString);
+        const day = String(date.getDate()).padStart(2, "0");
+        const months = [
+          "Jan",
+          "Feb",
+          "Mar",
+          "Apr",
+          "May",
+          "Jun",
+          "Jul",
+          "Aug",
+          "Sep",
+          "Oct",
+          "Nov",
+          "Dec",
+        ];
+        const month = months[date.getMonth()];
+        const year = date.getFullYear();
+        return `${day} ${month}, ${year}`;
+      }
+
+      // ===================== PDF Generate =====================
+      function generatePDF() {
+        const element = document.getElementById("pdfContent");
+
+        // বর্তমান ইনপুট ভ্যালুগুলো নেওয়া
+        const expDateInput = document.getElementById("expDateInput");
+        const subDateInput = document.getElementById("subDateInput");
+
+        const originalExpDateValue = expDateInput.value;
+        const originalSubDateValue = subDateInput.value;
+
+        // ফরম্যাট করা তারিখ বসানো
+        expDateInput.type = "text";
+        subDateInput.type = "text";
+        expDateInput.value = formatDate(originalExpDateValue);
+        subDateInput.value = formatDate(originalSubDateValue);
+
+        // PDF এর কনফিগারেশন
+        const opt = {
+          margin: 10,
+          filename: "Assignment_Paper.pdf",
+          image: { type: "jpeg", quality: 0.98 },
+          html2canvas: { scale: 2 },
+          jsPDF: { unit: "mm", format: "a4", orientation: "portrait" },
+        };
+
+        // PDF তৈরি করে নতুন ট্যাবে ওপেন করা
+        html2pdf()
+          .set(opt)
+          .from(element)
+          .toPdf()
+          .output("bloburl")
+          .then((blobUrl) => {
+            // নতুন ট্যাবে PDF ওপেন হবে
+            const newTab = window.open(blobUrl, "_blank");
+
+            // নতুন ট্যাব লোড হওয়ার পর প্রিন্ট ডায়ালগ ওপেন করার চেষ্টা
+            if (newTab) {
+              newTab.onload = function () {
+                // newTab.print();
+              };
+            }
+
+            // ইনপুট ফিল্ডগুলো আগের অবস্থায় ফিরিয়ে আনা
+            expDateInput.type = "date";
+            subDateInput.type = "date";
+            expDateInput.value = originalExpDateValue;
+            subDateInput.value = originalSubDateValue;
+          });
+      }
+    </script>
+  </body>
+</html>
